@@ -14,8 +14,8 @@ En la implementación realizada se desarrollaron dos objetivos:
 
 1. **Notas del Almacenamiento:**
     Ademas de estructurar el Json con los datos obtenido de la Web, se le agregaron 2 propiedades las cuales son:
-        documento : Donde se almacena el documento por el cual se realizó la consulta
-        tipo : Hace referencia al filtro por el cual se consulto ej: actor/ofendido (plantiff) || demandado/procesado (defendant)
+        - `documento` : Donde se almacena el documento por el cual se realizó la consulta
+        - `tipo` : Hace referencia al filtro por el cual se consulto ej: actor/ofendido (plantiff) || demandado/procesado (defendant)
    
 2. **API:**
    Se desarrollaron endpoints para listar y buscar los datos almacenados en el paso anterior. Además, se creó un endpoint para el inicio de sesión y autenticación, necesario para acceder a los datos previamente mencionados. Estos endpoints son los siguientes:
@@ -25,7 +25,7 @@ En la implementación realizada se desarrollaron dos objetivos:
      URL: ${HOST}/api/login
      Parámetros:
          - username: Nombre de usuario a validar (Ejemplo: Mauricio Carmona)
-         - email: Email del usuario, debe ser un email válido [a-z]@[a-z].[a-z]
+         - email: Email del usuario, debe ser un email válido ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
      Respuesta: Entrega un token de autenticación
      ```
 
