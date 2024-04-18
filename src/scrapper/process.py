@@ -62,7 +62,7 @@ def advanced_search(driver, document, filter):
 
         # Execute the corresponding option
         if filter in options:
-            return options[filter](driver, document)
+            return options[filter](driver, document, filter)
         else:
             print("Invalid option.")
 
@@ -71,7 +71,7 @@ def advanced_search(driver, document, filter):
         return None
 
 
-def search_plaintiff(driver, document):
+def search_plaintiff(driver, document, type):
     try:
         input_element = driver.find_element(By.ID, "mat-input-2")
         input_element.click()
@@ -90,7 +90,7 @@ def search_plaintiff(driver, document):
             "recaptcha": "verdad"
         }
         processes = make_request(url, payload)
-        get_process_details(processes, document)
+        get_process_details(processes, document, type)
         return processes
 
     except NoSuchElementException:
@@ -98,7 +98,7 @@ def search_plaintiff(driver, document):
         return None
 
 
-def search_defendant(driver, document):
+def search_defendant(driver, document, type):
     try:
         input_element = driver.find_element(By.ID, "mat-input-4")
         input_element.click()
@@ -117,14 +117,14 @@ def search_defendant(driver, document):
             "recaptcha": "verdad"
         }
         processes = make_request(url, payload)
-        get_process_details(processes, document)
+        get_process_details(processes, document,type)
         return processes
     except NoSuchElementException:
         print("Element not found. Verify the XPath selector.")
         return None
 
 
-def get_process_details(processes, document):
+def get_process_details(processes, document, type):
     print(f"Extracting process details for document {document}")
 
     with ThreadPoolExecutor() as executor:
@@ -134,6 +134,7 @@ def get_process_details(processes, document):
             process = process_futures[future]
             response = future.result()
             process['documento']=document
+            process['type']=type
             process["detalles"] = response.json(
             ) if response.status_code == 200 else None
             executor.submit(get_judicial_proceedings, process,
@@ -194,10 +195,10 @@ def close_driver(driver):
 
 
 def search_and_save_processes(driver, documents, type):
-    results = {type: {}}
+    results = []
     for document in documents:
         print(f"Searching processes for {type}: {document}")
-        results[type] = search_processes(driver, document, type)
+        results.extend(search_processes(driver, document, type))
         print("--------------------")
     return results
 
@@ -205,3 +206,5 @@ def search_and_save_processes(driver, documents, type):
 def save_results(results):
     with open("process_db.json", "w") as f:
         json.dump(results, f, indent=4)
+    print("Data extracted and saved succesfully")
+    
