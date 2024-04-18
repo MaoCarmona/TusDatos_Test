@@ -14,9 +14,10 @@ class TestGetProcess:
     @pytest.mark.asyncio
     async def test_default_limit_and_offset(self, client):
         # Make login request to obtain token
-        login_response = client.post("/api/login", json={"username": "Mauricio Camona", "email": "example@example.com"})
+        login_response = client.post("/api/login", json={"username": "Mauricio Carmona", "email": "example@example.com"})
         assert login_response.status_code == 200
-        token = login_response.json()["token"]
+        token = login_response.json()
+        print(token)
 
         # Make GET request to /api/process with token in authorization header
         response = client.get("/api/process", headers={"Authorization": f"Bearer {token}"})
@@ -24,14 +25,13 @@ class TestGetProcess:
         assert response.json() == processes[:10]
 
     @pytest.mark.asyncio
-    async def test_empty_processes(self, client):
+    async def test_get_one_process(self, client):
         # Make login request to obtain token
-        login_response = client.post("/api/login", json={"username": "Mauricio Camona", "email": "example@example.com"})
+        login_response = client.post("/api/login", json={"username": "Mauricio Carmona", "email": "example@example.com"})
         assert login_response.status_code == 200
-        token = login_response.json()["token"]
+        token = login_response.json()
 
-        # Clear the processes list and then make GET request to /api/process with token in authorization header
-        processes.clear()
-        response = client.get("/api/process", headers={"Authorization": f"Bearer {token}"})
+        id = 1
+        response = client.get("/api/process/{id}", headers={"Authorization": f"Bearer {token}"})
         assert response.status_code == 200
-        assert response.json() == []
+        assert response.json()['id'] == id
