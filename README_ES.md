@@ -38,6 +38,8 @@ En la implementación realizada se desarrollaron dos objetivos:
    - **Buscar Uno:**
      ```
      URL: ${HOST}/api/process/{id}
+     Cabecera:
+         Authorization: Token de autenticación
      Respuesta: Entrega un objeto específico filtrado por su propiedad ID
      ```
 * NOTA: Para ejecutar estos endpoints, sigue estos pasos (todos responden después de iniciar la aplicación):
