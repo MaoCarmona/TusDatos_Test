@@ -15,6 +15,19 @@ def write_token(data: dict):
 
 
 def validate_token(token, output=False):
+    """
+    Validates a JWT token and returns the decoded token if valid.
+
+    Args:
+        token (str): The JWT token to be validated.
+        output (bool, optional): If set to True, the function returns the decoded token. Defaults to False.
+
+    Returns:
+        dict or None: The decoded token if output is True and the token is valid. None otherwise.
+
+    Raises:
+        JSONResponse: If the token is invalid or expired, a JSON response with an appropriate error message and status code is raised.
+    """
     try:
         if output:
             return decode(token, key=getenv("SECRET"), algorithms=["HS256"])
