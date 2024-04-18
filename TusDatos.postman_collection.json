@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "26a36e8b-45c9-4e42-ba5c-36de801b9bbd",
+		"name": "TusDatos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33819450"
+	},
+	"item": [
+		{
+			"name": "Get All Processes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hdXJpY2lvIENhcm1vbmEiLCJlbWFpbCI6ImtldmluY2FybW9uYTc5MEBnbWFpbC5jb20iLCJleHAiOjE3MTM1NjcwNDd9.EkosvuVnynP8_QU7YXH6XMO-G2SZaJCw4V_GSg-eWl8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/process?offset=10&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"process"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "10"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Mauricio Carmona\",\r\n    \"email\":\"kevincarmona790@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Process",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hdXJpY2lvIENhcm1vbmEiLCJlbWFpbCI6ImtldmluY2FybW9uYTc5MEBnbWFpbC5jb20iLCJleHAiOjE3MTM1NjcwNDd9.EkosvuVnynP8_QU7YXH6XMO-G2SZaJCw4V_GSg-eWl8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/process/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"process",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
