@@ -8,6 +8,12 @@ The implemented solution aims to achieve two objectives:
 ## Implementation Details
 ### Data Extraction:
 Initially, a development was carried out to access the platform. Using Selenium's WebDriver, navigation through the platform was automated to access each of the locations where the data to be extracted is displayed. Subsequently, the data was captured and formatted to be stored with a defined structure in a JSON file.
+### Storage Notes:
+In addition to structuring the JSON with the data obtained from the web, 2 properties were added:
+
+- `documento`: Where the document used for the query is stored.
+- `tipo`: Refers to the filter used for the query, for example, plaintiff/offended (plaintiff) || defendant/prosecuted (defendant).
+
 
 ### API:
 Endpoints were developed to list and search the data stored in the previous step. Additionally, an endpoint was created for login and authentication, necessary to access the aforementioned data. These endpoints are as follows:
@@ -65,5 +71,11 @@ Endpoints were developed to list and search the data stored in the previous step
 
     ```
     python .\src\api\main.py
+    ```
+
+## Test
+* To run the test, execute the following command:
+    ```
+    pytest -v 
     ```
  

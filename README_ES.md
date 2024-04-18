@@ -11,6 +11,11 @@ En la implementación realizada se desarrollaron dos objetivos:
 
 1. **Extracción de Datos:**
    Inicialmente, se realizó un desarrollo para acceder a la plataforma. Utilizando WebDriver de Selenium, se automatizó la navegación por la plataforma para acceder a cada uno de los lugares donde se visualizan los datos a extraer. Posteriormente, se capturaron los datos y se les dio un formato para ser almacenados con una estructura definida en un archivo JSON.
+
+1. **Notas del Almacenamiento:**
+    Ademas de estructurar el Json con los datos obtenido de la Web, se le agregaron 2 propiedades las cuales son:
+        documento : Donde se almacena el documento por el cual se realizó la consulta
+        tipo : Hace referencia al filtro por el cual se consulto ej: actor/ofendido (plantiff) || demandado/procesado (defendant)
    
 2. **API:**
    Se desarrollaron endpoints para listar y buscar los datos almacenados en el paso anterior. Además, se creó un endpoint para el inicio de sesión y autenticación, necesario para acceder a los datos previamente mencionados. Estos endpoints son los siguientes:
@@ -71,3 +76,8 @@ En la implementación realizada se desarrollaron dos objetivos:
     python .\src\api\main.py
     ```
   
+## Test
+* Para ejecutar las pruebas, ejecuta el siguiente comando:
+    ```
+    pytest -v 
+    ```

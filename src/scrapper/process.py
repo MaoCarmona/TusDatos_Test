@@ -134,7 +134,7 @@ def get_process_details(processes, document, type):
             process = process_futures[future]
             response = future.result()
             process['documento']=document
-            process['type']=type
+            process['tipo']=type
             process["detalles"] = response.json(
             ) if response.status_code == 200 else None
             executor.submit(get_judicial_proceedings, process,
@@ -184,7 +184,7 @@ def search_processes(driver, document, type):
 
 def initialize_driver():
     options = webdriver.ChromeOptions()
-    # Ejecución sin abrir una ventana del navegador
+    # Execution without opening a browser window.
     options.add_argument('--headless')
     driver = webdriver.Chrome(options=options)
     return driver
