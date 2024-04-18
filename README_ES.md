@@ -50,6 +50,12 @@ En la implementación realizada se desarrollaron dos objetivos:
 * NOTA: Para ejecutar estos endpoints, sigue estos pasos (todos responden después de iniciar la aplicación):
     * Accede a la documentación generada por FastAPI [Docs](http://localhost:8000/docs)
     * Utiliza la colección de Postman llamada TusDatos.postman_collection.json
+
+## Extraccion de datos
+1. Para la extraccion de datos ejecutamos el siguiente comando en consola:
+    ```
+    python .\src\scrapper\main.py
+    ```
 ## Configuración
 
 1. Iniciamos habilitando un entorno virtual para nuestro proyecto con el siguiente comando:
