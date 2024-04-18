@@ -22,7 +22,7 @@ def login(user: User):
         If the username is not found, returns a JSON response with a "User not found" message and a 404 status code.
     """
     if user.username == "Mauricio Carmona":
-        return write_token(user.dict())
+        return write_token(user.model_dump())
     else:
         return JSONResponse(content={"message": "User not found"}, status_code=404)
 
